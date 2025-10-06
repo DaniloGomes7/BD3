@@ -270,43 +270,54 @@ SELECT cod_prod, desc_prod
 FROM produto 
 WHERE val_unit BETWEEN 0.10 AND 3.00;
 
-/*EX 9*/
+/*EX 8-A*/
 SELECT unid_prod, desc_prod 
 FROM produto 
 WHERE unid_prod LIKE '%g';
 
-/*EX 10*/
+/*EX 8-b*/
 SELECT nome_vend 
 FROM vendedor 
 WHERE nome_vend NOT LIKE 'A%';
  
-/*EX 11*/
+/*EX 9*/
 SELECT nome_vend, faixa_comiss 
 FROM vendedor 
 WHERE faixa_comiss NOT IN ('c');
 
-/*EX 12*/ 
+/*EX 10*/ 
 SELECT nome_cli, endereco 
 FROM cliente 
 WHERE endereco IS NOT NULL;
 
-/*EX 13*/
+/*EX 11*/
 SELECT nome_vend, sal_fixo 
 FROM vendedor 
 ORDER BY nome_vend ASC;
 
-/*EX 14*/ 
+/*EX 12*/ 
 SELECT nome_cli, cidade, uf 
 FROM cliente 
 ORDER BY uf, cidade DESC;
 
-/*EX 15*/
+/*EX 13*/
 SELECT desc_prod, unid_prod, val_unit 
 FROM produto 
 WHERE unid_prod LIKE 'kg' ORDER BY val_unit ASC;
 
-/*EX 16*/
+/*EX 14*/
 SELECT nome_vend, sal_fixo, ROUND((sal_fixo * 1.75) + 120, 2) AS novo_salario
 FROM vendedor
 WHERE faixa_comiss LIKE 'c' ORDER BY nome_vend ASC;
+
+/*EX 15*/
+SELECT 
+	nome_cli AS Clientes , cd_cli AS Pedidos
+FROM
+	cliente
+INNER JOIN
+	pedido
+ON
+	cliente.cod_cli = pedido.cd_cli;
+
  
